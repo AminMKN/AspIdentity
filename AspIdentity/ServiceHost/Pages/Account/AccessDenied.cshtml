@@ -1,0 +1,13 @@
+﻿@page
+@model ServiceHost.Pages.Account.AccessDeniedModel
+@{
+    ViewData["Title"] = "صفحه‌ای که دنبال آن بودید پیدا نشد!";
+}
+
+<div class="text-center text-white">
+    <div class="error mx-auto" data-text="404">404</div>
+    <p class="lead mb-5">@ViewData["Title"]</p>
+    <a asp-page="/Index" class="btn btn-info btn-user btn-block">
+        ← بازگشت به صفحه اصلی
+    </a>
+</div>

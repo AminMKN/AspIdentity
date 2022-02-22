@@ -1,0 +1,11 @@
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\bin\Debug\net6.0\AccountManagement.Infrastructure.Customize.deps.json
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\bin\Debug\net6.0\AccountManagement.Infrastructure.Customize.dll
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\bin\Debug\net6.0\ref\AccountManagement.Infrastructure.Customize.dll
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\bin\Debug\net6.0\AccountManagement.Infrastructure.Customize.pdb
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\obj\Debug\net6.0\AccountManagement.Infrastructure.Customize.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\obj\Debug\net6.0\AccountManagement.Infrastructure.Customize.AssemblyInfoInputs.cache
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\obj\Debug\net6.0\AccountManagement.Infrastructure.Customize.AssemblyInfo.cs
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\obj\Debug\net6.0\AccountManagement.Infrastructure.Customize.csproj.CoreCompileInputs.cache
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\obj\Debug\net6.0\AccountManagement.Infrastructure.Customize.dll
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\obj\Debug\net6.0\ref\AccountManagement.Infrastructure.Customize.dll
+F:\Projects\Portfolio\AspIdentityCode\AspIdentity\AccountManagement.Infrastructure.Customize\obj\Debug\net6.0\AccountManagement.Infrastructure.Customize.pdb

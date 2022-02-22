@@ -1,0 +1,68 @@
+﻿@page
+@model ServiceHost.Pages.Account.SignInModel
+@{
+    ViewData["Title"] = "ورود";
+    if (Model.Message != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: '@Model.Message',
+                text: 'مدیریت کاربران',
+                confirmButtonText: 'باشه',
+            })
+        </script>
+    }
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image">
+                        <img src="~/AdminTheme/assets/img/account.png" height="400px" width="400px" style="margin-top:20px;margin-right:50px;">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">خوش‌آمدید!</h1>
+                            </div>
+                            <form method="post" class="user">
+                                <div class="form-group">
+                                    <input asp-for="Command.UserName" type="text" class="form-control form-control-user" placeholder="نام کاربری">
+                                    <span asp-validation-for="Command.UserName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Command.Password" type="password" class="form-control form-control-user" placeholder="کلمه عبور">
+                                    <span asp-validation-for="Command.Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox small">
+                                        <input asp-for="Command.RememberMe" type="checkbox" class="custom-control-input" id="customCheck">
+                                        <label asp-for="Command.RememberMe" class="custom-control-label" for="customCheck">من را به خاطر بسپار</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">ورود</button>
+                            </form>
+                            <hr />
+                            <a asp-page="/Index" class="btn btn-info btn-user btn-block">
+                                بازگشت
+                            </a>
+                            <span>نام کاربری: OwnerSite</span>
+                            <br />
+                            <span>کلمه عبور: OwnerSite007</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

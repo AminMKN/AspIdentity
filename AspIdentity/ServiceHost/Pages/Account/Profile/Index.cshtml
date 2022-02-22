@@ -1,0 +1,89 @@
+﻿@page
+@model ServiceHost.Pages.Account.Profile.IndexModel
+@{
+    ViewData["Title"] = "پروفایل";
+    if (Model.Message != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: '@Model.Message',
+                text: 'مدیریت کاربران',
+                confirmButtonText: 'باشه',
+            })
+        </script>
+    }
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image">
+                        @{
+                            if (Model.Command.ProfilePhoto != null)
+                            {
+                                <img src="~/Pictures/@Model.Command.ProfilePhoto" alt="Profile" title="Profile" height="300px" width="300px" style="margin-top:5px;margin-right:100px;">
+                            }
+                            else
+                            {
+                                <img src="~/AdminTheme/assets/img/account.png" height="300px" alt="Profile" title="Profile" width="300px" style="margin-top:5px;margin-right:100px;">
+                            }
+                        }
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">خوش آمدید</h1>
+                                <p>
+                                    <span>نام کاربری :</span>
+                                    <a class="text-dark">@Model.Command.UserName</a>
+                                </p>
+                                <p>
+                                    <span>ایمیل :</span>
+                                    <a class="text-dark">@Model.Command.Email</a>
+                                </p>
+                                <p>
+                                    <span>شماره موبایل :</span>
+                                    @{
+                                        if (Model.Command.PhoneNumber != null)
+                                        {
+                                            <a class="text-dark">@Model.Command.PhoneNumber</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="text-danger">ثبت نشده</a>
+                                        }
+                                    }
+                                </p>
+                                <form method="post">
+                                    <p>
+                                        <span>وضعیت ایمیل :</span>
+                                        @{
+                                            if (Model.Command.EmailConfirmed)
+                                            {
+                                                <a class="text-success">تایید شده</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="text-danger">تایید نشده</a>
+                                                <br />
+                                                <button type="submit" class="btn btn-success">ارسال ایمیل فعال سازی</button>
+                                            }
+                                        }
+                                    </p>
+                                </form>
+                            </div>
+                            <a asp-page="/Account/Profile/Edit" class="btn btn-info btn-user btn-block">
+                                ویرایش اطلاعات شخصی
+                            </a>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

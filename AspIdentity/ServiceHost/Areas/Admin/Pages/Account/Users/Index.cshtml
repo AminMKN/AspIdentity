@@ -1,0 +1,91 @@
+﻿@page
+@model ServiceHost.Areas.Admin.Pages.Account.Users.IndexModel
+@{
+    ViewData["Title"] = "کاربران";
+}
+
+<h1 class="h3 mb-2 text-gray-800">@ViewData["Title"]</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="form-group">
+            <a class="btn btn-info" asp-page="./Create">ایجاد کاربر جدید</a>
+        </div>
+        <div class="form-group">
+            <form class="form-inline" method="get">
+                <input asp-for="SearchModel.UserName" class="form-control mr-1" placeholder="نام کاربری">
+                <button type="submit" class="btn btn-success mr-1">جستجو</button>
+                <a asp-page="./Index" class="btn btn-primary">مشاهده همه</a>
+            </form>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr class="text-center">
+                        <th>عکس پروفایل</th>
+                        <th>نام کاربری</th>
+                        <th>شماره موبایل</th>
+                        <th>ایمیل</th>
+                        <th>وضعیت ایمیل</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var user in Model.Users)
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @{
+                                        if (user.ProfilePhoto != null)
+                                        {
+                                            <img src="~/Pictures/@user.ProfilePhoto" style="width: 70px; height: 70px" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/AdminTheme/assets/img/user-profile.svg" style="width: 70px; height: 70px" />
+                                        }
+                                    }
+                                </td>
+                                <td>@user.UserName</td>
+                                <td>
+                                    @{
+                                        if (user.PhoneNumber != null)
+                                        {
+                                            @user.PhoneNumber
+                                        }
+                                        else
+                                        {
+                                            <a style="color:red">
+                                                ثبت نشده
+                                            </a>
+                                        }
+                                    }
+                                </td>
+                                <td>@user.Email</td>
+                                <td>
+                                    @{
+                                        if (user.EmailConfirmed)
+                                        {
+                                            <h2><i class="fa fa-check" style="color: green"></i></h2>
+                                        }
+                                        else
+                                        {
+                                            <h2><i class="fa fa-window-close" style="color: red"></i></h2>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-page="./AddUserToClaim" asp-route-id="@user.Id" class="btn btn-success">افزودن دسترسی</a>
+                                    <a asp-page="./RemoveUserFromClaim" asp-route-id="@user.Id" class="btn btn-danger">حذف دسترسی</a>
+                                    <a asp-page="./Edit" asp-route-id="@user.Id" class="btn btn-warning">ویرایش</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

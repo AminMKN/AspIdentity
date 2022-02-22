@@ -1,0 +1,64 @@
+﻿@page "{id}"
+@model ServiceHost.Areas.Admin.Pages.Account.Users.AddUserToClaimModel
+@{
+    ViewData["Title"] = "افزودن دسترسی کاربر";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @{
+            if (ModelState.ErrorCount > 0)
+            {
+                <div class="alert alert-danger">
+                    <div asp-validation-summary="ModelOnly"></div>
+                </div>
+            }
+        }
+        <h6 class="m-0 font-weight-bold text-primary">@ViewData["Title"]</h6>
+    </div>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Command.UserId" value="@Model.Command.UserId" />
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @{
+                        if (!Model.Command.UserClaims.Any())
+                        {
+                            <script type="text/javascript">
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'هیچ دسترسی یافت نشد',
+                                    text: 'فروشگاه اینترنتی الکترون شاپ',
+                                    confirmButtonText: 'باشه',
+                                })
+                            </script>
+                        }
+                        else
+                        {
+                            for (var i = 0; i < Model.Command.UserClaims.Count; i++)
+                            {
+                                <div class="form-group">
+                                    <input type="hidden" asp-for="Command.UserClaims[i].ClaimName" />
+                                    <input asp-for="Command.UserClaims[i].IsSelected" />
+                                    <label>@Model.Command.UserClaims[i].ClaimName</label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success">ذخیره</button>
+            <a class="btn btn-primary" asp-page="./Index">بازگشت</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

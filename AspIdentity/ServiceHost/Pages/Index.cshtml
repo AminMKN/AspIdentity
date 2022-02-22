@@ -1,0 +1,62 @@
+﻿@page
+@inject SignInManager<ApplicationUser> SignInManager
+@model IndexModel
+@{
+    ViewData["Title"] = "خانه";
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image">
+                        <img src="~/AdminTheme/assets/img/account.png" height="300px" width="300px" style="margin-top:5px;margin-right:100px;">
+                    </div>
+                    <div class="col-lg-6">
+                        @{
+                            if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">خوش آمدید</h1>
+                                        <h2 class="h4 text-gray-900 mb-4">نام کاربری: @Model.Command.UserName</h2>
+                                        <h2 class="h4 text-gray-900 mb-4">ایمیل: @Model.Command.Email</h2>
+                                    </div>
+                                    <a asp-area="Admin" asp-page="/Index" class="btn btn-primary btn-user btn-block">
+                                        پنل مدیریت
+                                    </a>
+                                    <a asp-page="/Account/Profile/Index" class="btn btn-info btn-user btn-block">
+                                        مدیریت حساب کاربری
+                                    </a>
+                                    <a asp-page="/Account/SignIn" asp-page-handler="SignOut" class="btn btn-danger btn-user btn-block">
+                                        خروج
+                                    </a>
+                                    <hr>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">خوش‌آمدید!</h1>
+                                    </div>
+                                    <a asp-page="/Account/SignUp" class="btn btn-success btn-user btn-block">
+                                        ثبت نام
+                                    </a>
+                                    <a asp-page="/Account/SignIn" class="btn btn-info btn-user btn-block">
+                                        ورود
+                                    </a>
+                                    <a asp-page="/Account/ForgotPassword" class="btn btn-warning btn-user btn-block">
+                                        رمز عبور را فراموش کرده‌اید؟
+                                    </a>
+                                    <hr>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
